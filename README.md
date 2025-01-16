@@ -1,6 +1,6 @@
 ## Architecture Diagram
 
-<img src="mqtt.drawio.png" alt="alt text" style="width: 100%;">
+<img src="public/mqtt.drawio.png" alt="alt text" style="width: 100%;">
 
 #### Tools that im used for mqtt
 
@@ -62,4 +62,4 @@ Payload Structure (All fields are required)
 
 Below is a preview of the API documentation. The complete API documentation can be found in the folder `docs/api-docs.json`. Open it with Swagger to see full the documentation or visit https://app.swaggerhub.com/apis/ptjayaintegrasinusan/data-device_api/1.0.0.
 
-![alt text](image.png)
+![alt text](public/image.png)
