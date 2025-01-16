@@ -35,7 +35,7 @@ const getHistoryDevice = async (req, res) => {
 
     const result = await DeviceData.findAll({
       where: { device_id, timestamp: { [Op.between]: [start, end] } },
-      order: [["timestamp", "ASC"]],
+      order: [["timestamp", "DESC"]],
     });
 
     res.json(result);
