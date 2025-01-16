@@ -9,7 +9,10 @@
 - [mqtt-library](https://github.com/mqttjs/MQTT.js)
 
 ## Project Setup
-
+```bash
+git clone https://github.com/ahmdjaee/mqtt-test-sequelize.git
+```
+cd `mqtt-test-sequelize`
 ```bash
 npm install
 ```
