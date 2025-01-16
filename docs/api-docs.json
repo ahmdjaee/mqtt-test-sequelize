@@ -1,0 +1,217 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Data Device API",
+        "description": "Data Device API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "paths": {
+        "/api/data/latest": {
+            "get": {
+                "summary": "Get latest data of all devices",
+                "description": "Returns the latest data for all devices.",
+                "responses": {
+                    "200": {
+                        "description": "The latest data for all devices",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "device_id": {
+                                                "type": "string"
+                                            },
+                                            "humidity": {
+                                                "type": "number"
+                                            },
+                                            "temperature": {
+                                                "type": "number"
+                                            },
+                                            "timestamp": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "device_id",
+                                            "humidity",
+                                            "temperature",
+                                            "timestamp"
+                                        ],
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/data/history": {
+            "get": {
+                "summary": "Get history data of all devices",
+                "description": "Returns all data entries within the specified date range for each device.",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The start date of the range in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": "The end date of the range in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "device_id",
+                        "in": "query",
+                        "description": "The ID of the device to get history data for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "History data of all devices",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "device_id": {
+                                                "type": "string"
+                                            },
+                                            "humidity": {
+                                                "type": "number"
+                                            },
+                                            "temperature": {
+                                                "type": "number"
+                                            },
+                                            "timestamp": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "device_id",
+                                            "humidity",
+                                            "temperature",
+                                            "timestamp"
+                                        ],
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "errors"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/data/average": {
+            "get": {
+                "summary": "Get average data temperature and humidity",
+                "description": "Returns the average humidity and temperature for each device within the specified date range",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The start date of the range in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": "The end date of the range in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "device_id",
+                        "in": "query",
+                        "description": "The ID of the device to get history data for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Average data temperature and humidity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "average_humidity": {
+                                            "type": "number"
+                                        },
+                                        "average_temperature": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "errors"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
